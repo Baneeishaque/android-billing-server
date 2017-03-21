@@ -2,8 +2,8 @@
 include_once 'config.php';
 $stock=$_POST['stock'];
 $id=$_POST['id'];
-$sql="UPDATE `product` SET `stock`=$stock WHERE `id`=$id";
-if($con->query($sql))
+$bill_id_sql="UPDATE `product` SET `stock`=$stock WHERE `id`=$id";
+if($con->query($bill_id_sql))
 {
     echo "0";
 }

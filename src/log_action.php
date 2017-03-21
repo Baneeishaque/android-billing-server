@@ -5,8 +5,8 @@ require 'dbconfig.php';
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-    $sql = "SELECT * FROM USER WHERE `username`=:user AND `password`=:pass AND `role`='owner'";
-    $result = $conn->prepare($sql);
+    $bill_id_sql = "SELECT * FROM USER WHERE `username`=:user AND `password`=:pass AND `role`='owner'";
+    $result = $conn->prepare($bill_id_sql);
     $result->bindParam(':user', $_POST['username'], PDO::PARAM_STR);
     $result->bindParam(':pass', $_POST['password'], PDO::PARAM_STR);
 

@@ -34,8 +34,8 @@
                             try {
                                 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-                                $sql = "SELECT * FROM PURCHASE WHERE `BILL-NO`=" . $_GET['bill'];
-                                $result = $conn->prepare($sql);
+                                $bill_id_sql = "SELECT * FROM PURCHASE WHERE `BILL-NO`=" . $_GET['bill'];
+                                $result = $conn->pbill_id_sqlare($sql);
                                 if ($result->execute()) {
                                     $row = $result->fetch(PDO::FETCH_ASSOC);
                                     echo '
@@ -90,7 +90,7 @@
                         </tr>
                         <?php
                         try {
-                            $sql = "SELECT * FROM BILL WHERE ID=" . $_GET['bill'] . "";
+                         $sql = "SELECT * FROM BILL WHERE ID=" . $_GET['bill'] . "";
 //                            echo $sql;
                             $result = $conn->prepare($sql);
                             if ($result->execute()) {
@@ -111,10 +111,9 @@
                             die("Can't connect to the database $dbname :" . $pe->getMessage());
                         }
 
-                        try {
-                            $sql = "SELECT SUM(`AMOUNT`) AS `AMOUNT`,SUM(`TAX`) AS `TAX`,SUM(`TOTAL`) AS `TOTAL` FROM BILL WHERE ID=" . $_GET['bill'];
+                                                   $sql = "SELECT SUM(`AMOUNT`) AS `AMOUNT`,SUM(`TAX`) AS `TAX`,SUM(`TOTAL`) AS `TOTAL` FROM BILL WHERE ID=" . $_GET['bill'];
 //                            echo $sql;
-                            $result = $conn->prepare($sql);
+              $result = $conn->prepare($sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>
@@ -129,9 +128,7 @@
                             } else {
                                 die("Can't execute the query");
                             }
-                        } catch (PDOException $pe) {
-                            die("Can't connect to the database $dbname :" . $pe->getMessage());
-                        }
+                     
                         ?>
 
                     </table>

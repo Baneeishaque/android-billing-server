@@ -34,8 +34,8 @@
                             try {
                                 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-                                $sql = "SELECT SHOP.NAME AS NAME,USER.NAME AS `ADMIN-NAME` FROM SHOP,USER WHERE `REG.NO`=" . $_GET['id']." AND ID=ADMIN";
-                                $result = $conn->prepare($sql);
+                                $bill_id_sql = "SELECT SHOP.NAME AS NAME,USER.NAME AS `ADMIN-NAME` FROM SHOP,USER WHERE `REG.NO`=" . $_GET['id']." AND ID=ADMIN";
+                                $result = $conn->prepare($bill_id_sql);
                                 if ($result->execute()) {
                                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                         echo '
@@ -91,9 +91,9 @@
                         </tr>
                         <?php
                         try {
-                            $sql = "SELECT * FROM ACCOUNT WHERE `SHOP-ID`=" . $_GET['id'];
+                            $bill_id_sql = "SELECT * FROM ACCOUNT WHERE `SHOP-ID`=" . $_GET['id'];
 //                            echo $sql;
-                            $result = $conn->prepare($sql);
+                            $result = $conn->prepare($bill_id_sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>
@@ -113,9 +113,9 @@
                         }
 
                         try {
-                            $sql = "SELECT SUM(`TOTAL-AMOUNT`) AS `TOTAL-AMOUNT`,SUM(`TOTAL-TAX`) AS `TOTAL-TAX`,SUM(`NET-AMOUNT`) AS `NET-AMOUNT` FROM ACCOUNT WHERE `SHOP-ID`=" . $_GET['id'];
+                            $bill_id_sql = "SELECT SUM(`TOTAL-AMOUNT`) AS `TOTAL-AMOUNT`,SUM(`TOTAL-TAX`) AS `TOTAL-TAX`,SUM(`NET-AMOUNT`) AS `NET-AMOUNT` FROM ACCOUNT WHERE `SHOP-ID`=" . $_GET['id'];
 //                            echo $sql;
-                            $result = $conn->prepare($sql);
+                            $result = $conn->prepare($bill_id_sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>

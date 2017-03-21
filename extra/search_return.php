@@ -7,8 +7,8 @@
      $branch = $_GET["branch"];
      $semester = $_GET["semester"];
      
-     $sql = "SELECT `register no`, name, presence FROM attendence where date='.$date.' and branch='.$branch.' and semester='.$semester.";
-        foreach ($db->query($sql) as $row) {
+     $bill_id_sql = "SELECT `register no`, name, presence FROM attendence where date='.$date.' and branch='.$branch.' and semester='.$semester.";
+        foreach ($db->query($bill_id_sql) as $row) {
        
         $msg='<table class="listing form" cellpadding="0" cellspacing="0">
                             <tr>

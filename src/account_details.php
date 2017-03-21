@@ -34,8 +34,8 @@
                             try {
                                 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-                                $sql = "SELECT SHOP.NAME AS NAME,USER.NAME AS `ADMIN-NAME` FROM SHOP,USER WHERE `REG.NO`=" . $_GET['id']." AND ID=ADMIN";
-                                $result = $conn->prepare($sql);
+                                $bill_id_sql = "SELECT SHOP.NAME AS NAME,USER.NAME AS `ADMIN-NAME` FROM SHOP,USER WHERE `REG.NO`=" . $_GET['id']." AND ID=ADMIN";
+                                $result = $conn->pbill_id_sqlare($sql);
                                 if ($result->execute()) {
                                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                         echo '
@@ -98,7 +98,7 @@
                         try {
                             $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-                            $sql = "SELECT * FROM PURCHASE WHERE DAY=" . $_GET['day'] . " AND MONTH=" . $_GET['month'] . " AND YEAR=" . $_GET['year'] . " AND `SHOP-ID`=" . $_GET['id'] . "";
+                      $sql = "SELECT * FROM PURCHASE WHERE DAY=" . $_GET['day'] . " AND MONTH=" . $_GET['month'] . " AND YEAR=" . $_GET['year'] . " AND `SHOP-ID`=" . $_GET['id'] . "";
 //                            echo $sql;
                             $result = $conn->prepare($sql);
                             if ($result->execute()) {
@@ -120,10 +120,9 @@
                             die("Can't connect to the database $dbname :" . $pe->getMessage());
                         }
 
-                        try {
-                            $sql = "SELECT SUM(`AMOUNT`) AS `AMOUNT`,SUM(`TAX`) AS `TAX`,SUM(`TOTAL`) AS `TOTAL` FROM PURCHASE WHERE DAY=" . $_GET['day'] . " AND MONTH=" . $_GET['month'] . " AND YEAR=" . $_GET['year'] . " AND `SHOP-ID`=" . $_GET['id'];
+                                           $sql = "SELECT SUM(`AMOUNT`) AS `AMOUNT`,SUM(`TAX`) AS `TAX`,SUM(`TOTAL`) AS `TOTAL` FROM PURCHASE WHERE DAY=" . $_GET['day'] . " AND MONTH=" . $_GET['month'] . " AND YEAR=" . $_GET['year'] . " AND `SHOP-ID`=" . $_GET['id'];
 //                            echo $sql;
-                            $result = $conn->prepare($sql);
+          $result = $conn->prepare($sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>
@@ -139,9 +138,7 @@
                             } else {
                                 die("Can't execute the query");
                             }
-                        } catch (PDOException $pe) {
-                            die("Can't connect to the database $dbname :" . $pe->getMessage());
-                        }
+                        
                         ?>
 
                     </table>

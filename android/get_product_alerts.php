@@ -1,7 +1,7 @@
 <?php
 include_once 'config.php';
-$sql="SELECT * FROM `product` where `minimum-stock` >= stock";
-$result=$con->query($sql);
+$bill_id_sql="SELECT * FROM `product` where `minimum-stock` >= stock";
+$result=$con-bill_id_sqlery($sql);
 $emptyarray=array();
 while ($row= mysqli_fetch_assoc($result))
 {

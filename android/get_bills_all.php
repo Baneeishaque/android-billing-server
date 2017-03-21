@@ -2,8 +2,8 @@
 
 include_once 'config.php';
 $shop = $_POST['shop'];
-$sql = "SELECT DISTINCT id FROM `bill`";
-$result = $con->query($sql);
+$bill_id_sql = "SELECT DISTINCT id FROM `bill`";
+$result = $con->query($bill_id_sql);
 $emptyarray = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $emptyarray[] = $row;

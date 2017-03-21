@@ -45,8 +45,8 @@
                         try {
                             $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 							$owner=$_GET['owner'];
-                            $sql = "SELECT * FROM SHOP where owner=$owner";
-                            $result = $conn->prepare($sql);
+                            $bill_id_sql = "SELECT * FROM SHOP where owner=$owner";
+                            $result = $conn->prepare($bill_id_sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>
@@ -89,8 +89,8 @@
                         try {
                             $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 							$owner=$_GET['owner'];
-                            $sql = "SELECT * FROM SHOP where owner!=$owner";
-                            $result = $conn->prepare($sql);
+                            $bill_id_sql = "SELECT * FROM SHOP where owner!=$owner";
+                            $result = $conn->prepare($bill_id_sql);
                             if ($result->execute()) {
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo '<tr>
